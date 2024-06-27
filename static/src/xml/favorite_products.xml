@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('rightpane')]" position="inside">
+            <div class="favorite-products-container">
+                <div class="favorite-products">
+                    <t t-foreach="favoriteProducts" t-as="product" t-key="product.id" class="product-list {{pos.productListViewMode}} p-1">
+                    <article tabindex="0"
+                             t-attf-class="{{pos.productViewMode}} product position-relative btn btn-light d-flex align-items-stretch p-0 m-0 text-start cursor-pointer overflow-hidden transition-base"
+                             t-on-keypress="(event) => event.code === 'Space' ? onClick(event) : ()=>{}"
+                             t-on-click="onClick"
+                             t-att-data-product-id="product.id"
+                             t-attf-aria-labelledby="article_product_{{product.id}}">
+                        <div class="product-information-tag"
+                             t-on-click.stop="onProductInfoClick">
+                            <i class="product-information-tag-logo fa fa-info" role="img"
+                               aria-label="Product Information" title="Product Information"/>
+                        </div>
+                        <div t-if="pos.show_product_images and product.getImageUrl()" class="product-img">
+                            <img class="w-100" t-att-src="pos.show_product_images and product.getImageUrl()" t-att-alt="product.display_name"/>
+                        </div>
+                        <div class="product-content d-flex flex-column justify-content-between h-100 mx-2 py-1">
+                            <div class="overflow-hidden lh-sm fw-bolder product-name"
+                                 t-att-class="{'no-image': !pos.show_product_images and product.getImageUrl()}"
+                                 t-attf-id="article_product_{{product.id}}"
+                                 t-esc="product.display_name"/>
+                            <span t-if="product.getFormattedUnitPrice()" class="price-tag text-primary py-1 fw-bolder"
+                                  t-esc="product.getFormattedUnitPrice()"/>
+                        </div>
+                    </article>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<t t-name="pos_custom.MessagePopupButton">
+ <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="ShowMessagePopup">
+ <i class="fa fa-envelope" role="img" aria-label="Message popup button" title="Message popup Button"/>
+<span>Message Popup</span>
+ </button>
+</t>
+</templates>

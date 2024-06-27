@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="web.KanbanView" t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='canCreate and props.showButtons']" position="after">
+            <button type="button" t-if="model.root.resModel == 'pos.config'"
+                    class="btn btn-primary" id="view_stock"
+                    t-on-click="onClick">
+                        View Stock
+            </button>
+        </xpath>
+    </t>
+</templates>

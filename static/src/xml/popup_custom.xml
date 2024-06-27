@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="pos_custom.CustomButtonPopup" owl="1">
+   <div class="popup custom_popup">
+       <div class="modal-header justify-content-center">
+            <h2 class="modal-title">
+               <t t-esc="props.title"/>
+            </h2>
+         </div>
+       <div class="modal-body custom-form-view">
+<form>
+
+<div class="col d-flex justify-content-between align-items-center p-3">
+
+<label class="form-label label" for="date">Order Date</label>
+
+    <input class="w-75 form-control" name="date"/>
+
+</div>
+
+    <div class="col d-flex justify-content-between align-items-center p-3">
+
+<label class="form-label label" for="order">Order</label>
+
+        <input class="w-75 form-control" name="order"/>
+
+</div>
+
+    <div class="col d-flex justify-content-between align-items-center p-3">
+
+<label class="form-label label" for="notes">Notes</label>
+
+        <input type="text" class="w-75 form-control" name="notes"/>
+
+</div>
+
+</form>
+ </div>
+       <div class="footer footer-flex modal-footer justify-content-end">
+           <div class="button save btn btn-lg btn-primary"
+                t-on-click="save">
+               <t t-esc="props.confirmText"/>
+            </div>
+           <div class="button cancel btn btn-lg btn-primary"
+                t-on-click="cancel">
+               <t t-esc="props.closePopup"/>
+            </div>
+         </div>
+       </div>
+   </t>
+</templates>

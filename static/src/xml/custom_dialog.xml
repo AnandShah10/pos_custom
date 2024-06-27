@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+<t t-name="pos_custom.CustomDialog">
+    <Dialog size="props.size" title="props.title" modalRef="modalRef">
+      <p t-out="props.body" class="text-prewrap"/>
+      <t t-set-slot="footer">
+        <button class="btn" t-att-class="props.confirmClass" t-on-click="_confirm" t-esc="props.confirmLabel"/>
+        <button t-if="props.cancel" class="btn btn-secondary" t-on-click="_cancel" t-esc="props.cancelLabel"/>
+      </t>
+    </Dialog>
+  </t>
+</templates>

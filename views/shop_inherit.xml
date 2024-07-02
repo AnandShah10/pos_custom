@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<template id="shop_product_inherit" inherit_id="website_sale.product_custom_text" name="Product Page">
+<!--    <xpath expr="//button[@name='add_qty']" position="attributes">-->
+<!--        <attribute name="t-on-click">checkLimit</attribute>-->
+<!--    </xpath>-->
+    <xpath expr="//a[@href='/terms']" position="before">
+<!--        <t t-esc="add_qty"/>-->
+        <t t-if="product.qty_limit">
+        <span t-if="add_qty &gt; product.max_limit" class="text-danger">Max Ordered Quantity is
+            <t t-esc="product.max_limit"/>
+        </span>
+        <span t-if="add_qty &lt; product.min_limit" class="text-primary">Minimum Ordered Quantity is
+            <t t-esc="product.min_limit"/>
+        </span>
+        <span t-if="add_qty == product.min_limit" class="text-warning">Minimum Ordered Quantity is
+            <t t-esc="product.min_limit"/></span>
+        <br/>
+        </t>
+    </xpath>
+</template>
+</odoo>

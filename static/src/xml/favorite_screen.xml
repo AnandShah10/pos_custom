@@ -5,16 +5,16 @@
             <div class="screen-header">
                 <div>
                     <h1 style="color:white !important;font-weight:bold;">Favorite Product Screen</h1>
-                    <p>Date:<span t-esc="new Date().toLocaleDateString()"/></p>
+                    <p>Date:<span t-esc="date"/></p>
                     <p>Popup Message:
                         <span t-if="pos.popupMessage" t-esc="pos.popupMessage"/>
                     </p>
                 </div>
                 <div class="large-buttons">
                     <button t-on-click="()=>pos.showScreen('ProductScreen')">GO back</button>
-                    <button class="red">Mark as<br/>Favorite
+                    <button class="red" t-on-click="()=>this.markFavorite(state.activeProduct)">Mark as<br/>Favorite
                     </button>
-                    <button class="orange">Mark as<br/>Not Favorite
+                    <button class="orange" t-on-click="()=>this.markNotFavorite(state.activeProduct)">Mark as<br/>Not Favorite
                     </button>
                     <button class="blue" t-on-click="getProducts">Toggle Favorites</button>
 

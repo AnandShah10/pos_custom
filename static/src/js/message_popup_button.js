@@ -18,8 +18,10 @@ export class MessagePopupButton extends Component {
             body:_t("Hello!"),
             placeholder:_t('Enter Your Name'),
         })
-        if(confirm)
+        console.log("????????????",confirm,payload)
+        if(confirm != false)
         {
+            console.log("Confirmed!!!!!!!!!!!!!!!!!!",payload)
             this.pos.popupMessage=payload;
         }
      }

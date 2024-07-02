@@ -10,12 +10,17 @@
 PoS Custom module
 """,
     'category': 'Custom/Pos',
-    'depends': ['point_of_sale','base','web','web_editor','sale','account'],
-    'data': ['views/form_disable.xml'],
+    'depends': ['point_of_sale', 'base', 'web', 'web_editor', 'sale', 'account','website_sale','product'],
+    'data': [
+        'views/form_disable.xml',
+        'views/pos_inherit.xml',
+        'views/product.xml',
+        'views/shop_inherit.xml',
+    ],
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
-    'assets':{
+    'assets': {
         'point_of_sale._assets_pos': [
             'pos_custom/static/src/scss/favorite_screen.scss',
             'pos_custom/static/src/scss/favorite_product.scss',
@@ -37,11 +42,13 @@ PoS Custom module
             'pos_custom/static/src/xml/custom_dialog.xml',
             'pos_custom/static/src/xml/favorite_products.xml',
             'pos_custom/static/src/js/favorite_products.js',
+            'pos_custom/static/src/js/pos_store.js',
+            'pos_custom/static/src/js/remove_zero_qty.js',
         ],
-        'web.assets_backend':['pos_custom/static/src/js/form_disable.js',
-                              'pos_custom/static/src/js/kanban_header_button.js',
-                              'pos_custom/static/src/xml/kanban_header_button.xml',
-                              'pos_custom/static/src/js/list_sort_freeze.js',
-                              ],
+        'web.assets_backend': ['pos_custom/static/src/js/form_disable.js',
+                               'pos_custom/static/src/js/kanban_header_button.js',
+                               'pos_custom/static/src/xml/kanban_header_button.xml',
+                               'pos_custom/static/src/js/list_sort_freeze.js',
+                               ],
     }
 }

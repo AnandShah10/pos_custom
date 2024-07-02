@@ -22,6 +22,7 @@ class FavoriteProductScreen extends ControlButtonsMixin(Component){
             favorite_products : [],
             products:[],
         })
+        this.date = new Date().toUTCString()
         onWillStart(async ()=>{
             this.state.favorite_products = this.pos.favorite_products,
             this.getProducts()
@@ -45,6 +46,24 @@ class FavoriteProductScreen extends ControlButtonsMixin(Component){
     setActiveProduct(product)
     {
         this.state.activeProduct = product
+    }
+    async markFavorite(product)
+    {   console.log(product.id)
+        await this.env.services.rpc('/mark_favorite',{
+            id:product.id,
+        })
+        await this.pos.setFavoriteProducts()
+        this.state.favorite_products = await this.pos.favorite_products
+        this.getProducts()
+    }
+    async markNotFavorite(product)
+    {   console.log(product.id)
+        await this.env.services.rpc('/mark_not_favorite',{
+            id:product.id,
+        })
+        await this.pos.setFavoriteProducts()
+        this.state.favorite_products = await this.pos.favorite_products
+        this.getProducts()
     }
      getNumpadButtons() {
         return [

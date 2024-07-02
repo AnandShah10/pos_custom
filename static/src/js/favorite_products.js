@@ -9,14 +9,11 @@ patch(ProductScreen.prototype,{
     setup()
     {
         super.setup()
-        console.log("Done?",this.pos.db)
+        console.log("Done?",this.pos)
 
         onWillStart(async ()=>{
-            const data = await jsonrpc("/get_favorites",{
-                domain: [['available_in_pos','=',true],['additional_product_tag_ids.name','=','favorites']]
-            })
-            console.log(data)
-            this.favorite_products = data
+            console.log(this.pos.favorite_products)
+            this.favorite_products = this.pos.favorite_products
         })
     },
     get favoriteProducts()
@@ -26,5 +23,18 @@ patch(ProductScreen.prototype,{
         let favorites = []
         this.favorite_products.forEach(p=>favorites.push(products[p]))
         return favorites
+    },
+    getNumpadButtons() //for numpad
+    {
+        const old_numpad= super.getNumpadButtons()
+        for(let i=0;i<old_numpad.length;i++)
+        {
+            if(old_numpad[i].value==='Backspace' && this.pos.config.visible_backspace_btn)
+            {
+                old_numpad.splice(i,1)
+            }
+        }
+        return old_numpad
     }
+
 })
